@@ -1,0 +1,44 @@
+{
+  "name": "revenueguard-agent-platform",
+  "version": "1.0.0",
+  "description": "Full-stack RevOps AI agent platform for revenue leakage detection, renewal risk triage, guardrails, audit traces, and evals.",
+  "type": "module",
+  "license": "MIT",
+  "author": "lixian",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "node --watch server/index.js",
+    "dev:client": "vite --host 0.0.0.0",
+    "start": "node server/index.js",
+    "test": "node --test test/*.test.js && npm run eval",
+    "eval": "node eval/scenarios.test.js",
+    "build": "vite build",
+    "health": "node scripts/project-health.js",
+    "ops:check": "node scripts/ops-check.js",
+    "ci:local": "npm run health && npm run ops:check && npm test && npm run build"
+  },
+  "keywords": [
+    "ai-agent",
+    "revops",
+    "revenue-leakage",
+    "renewal-risk",
+    "guardrails",
+    "audit-log",
+    "react",
+    "express"
+  ],
+  "dependencies": {
+    "@emnapi/core": "1.11.1",
+    "@emnapi/runtime": "1.11.1",
+    "@vitejs/plugin-react": "^6.0.3",
+    "concurrently": "^10.0.3",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "vite": "^8.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
