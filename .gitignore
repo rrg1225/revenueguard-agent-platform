@@ -5,5 +5,6 @@ dist/
 *.local.*
 traces/*.json
 coverage/
+.playwright-cli/
 *.log
 .DS_Store
