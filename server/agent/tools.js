@@ -124,7 +124,9 @@ export function draftSavePlan(evidence, entitlements, leakage, renewalRisk, gate
         { give: "executive escalation path", get: "support escalation closure plan" },
         { give: "renewal narrative draft", get: "finance and legal approval before customer contact" }
       ],
-      noGoCriteria: ["missing contract citation", "unresolved legal approval", "customer-facing claim not grounded in evidence"]
+      noGoCriteria: ["missing contract citation", "unresolved legal approval", "customer-facing claim not grounded in evidence"],
+      successMetrics: ["leakage validated", "true-up approved", "renewal risk reduced", "customer-safe narrative approved"],
+      escalationTrigger: "Renewal under 30 days, disputed invoice unresolved, or legal approval missing."
     },
     approvalGates: gates,
     customerSafeLanguage: "All recommendations are dry-run only and require finance, legal, or account-owner review before external action.",

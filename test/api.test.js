@@ -57,6 +57,7 @@ test("run endpoint returns cited leakage plan and persists trace", async () => {
     assert.ok(run.citations.length >= 4);
     assert.equal(run.plan.negotiationPlan.posture, "executive-save");
     assert.ok(run.plan.negotiationPlan.noGoCriteria.includes("customer-facing claim not grounded in evidence"));
+    assert.ok(run.plan.negotiationPlan.successMetrics.includes("true-up approved"));
     assert.equal(fs.readdirSync(traceDir).filter((file) => file.endsWith(".json")).length, 1);
   });
 });
