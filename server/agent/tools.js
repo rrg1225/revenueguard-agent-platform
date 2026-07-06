@@ -112,6 +112,20 @@ export function draftSavePlan(evidence, entitlements, leakage, renewalRisk, gate
   return {
     executiveSummary: `${evidence.account} is ${renewalRisk.tier} renewal risk with ${leakage.tier} leakage exposure.`,
     actions,
+    negotiationPlan: {
+      posture: renewalRisk.tier === "critical" ? "executive-save" : leakage.tier === "critical" ? "commercial-true-up" : "standard-renewal",
+      valueStory: [
+        `Estimated leakage exposure: $${leakage.estimatedLeakage.toLocaleString()}.`,
+        `Renewal risk score: ${renewalRisk.score}/100.`,
+        `Account owner: ${evidence.owner}.`
+      ],
+      giveGets: [
+        { give: "billing reconciliation support", get: "confirmed seat and usage baseline" },
+        { give: "executive escalation path", get: "support escalation closure plan" },
+        { give: "renewal narrative draft", get: "finance and legal approval before customer contact" }
+      ],
+      noGoCriteria: ["missing contract citation", "unresolved legal approval", "customer-facing claim not grounded in evidence"]
+    },
     approvalGates: gates,
     customerSafeLanguage: "All recommendations are dry-run only and require finance, legal, or account-owner review before external action.",
     citations: [
